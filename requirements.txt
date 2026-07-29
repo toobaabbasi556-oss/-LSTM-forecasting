@@ -1,0 +1,12 @@
+# Exact pins for reproducibility (Python 3.11+; tested on 3.12).
+# Install PyTorch CPU wheels from the official index:
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cpu
+numpy==2.5.1
+pandas==3.0.3
+PyYAML==6.0.3
+matplotlib==3.11.0
+tabulate==0.10.0
+torch==2.13.0+cpu
+
+# Dev / test
+pytest==9.1.1
