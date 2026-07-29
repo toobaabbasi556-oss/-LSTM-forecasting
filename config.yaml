@@ -1,0 +1,28 @@
+# Single source of truth for the run. No magic numbers in code — everything
+# tunable lives here so `python main.py` is fully reproducible from this file.
+data:
+  source: ett            # ett | jena  (jena is the offline-safe fallback)
+  target: OT             # target column; for jena this becomes "T (degC)"
+
+window:
+  L: 96                  # input window length (past steps fed to the model)
+  H: 24                  # forecast horizon (future steps predicted at once)
+  season: 24             # seasonal period (hourly data -> daily cycle = 24)
+
+split:
+  train: 0.70            # chronological split fractions; must sum to 1.0
+  val: 0.15
+  test: 0.15
+
+train:
+  seed: 42
+  epochs: 50
+  batch_size: 64
+  lr: 0.001
+  patience: 8            # early stopping patience, measured on validation MASE
+  hidden_size: 64        # LSTM hidden units
+  num_layers: 2          # LSTM stacked layers
+  dropout: 0.2           # LSTM dropout (between layers)
+  kernel_size: 25        # DLinear moving-average kernel for trend extraction
+
+models: [naive, seasonal_naive, dlinear, lstm]

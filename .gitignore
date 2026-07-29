@@ -1,0 +1,32 @@
+# Raw data is downloaded on first run, never committed (can be large).
+data/raw/
+data/*.csv
+
+# Model checkpoints / saved predictions produced during a run.
+checkpoints/
+*.pt
+*.ckpt
+
+# We DO commit reports/ (table + plots are deliverables), but not scratch runs.
+reports/tmp/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local Claude Code settings (machine-specific)
+.claude/
+
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
